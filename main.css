@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap");
+
+html {
+  font-family: "Quantico", sans-serif;
+}
+body {
+  text-align: center;
+}
+.container {
+  max-width: min(75em, 100%);
+  margin: 0 auto;
+}
+h1 {
+  text-decoration: underline;
+}
+ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  padding: 1.5rem;
+  gap: 1.5rem;
+}
+ul li {
+  box-shadow: 0 0 7.5px;
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+  animation: move-in forwards 0.5s;
+  opacity: 0;
+  translate: -2rem;
+  background-image: linear-gradient(45deg, aquamarine, cyan);
+  transition: 0.25s ease-in-out;
+}
+ul li:hover {
+  scale: 1.025;
+  cursor: pointer;
+}
+@keyframes move-in {
+  from {
+    opacity: 0;
+    translate: -2rem;
+  }
+  to {
+    opacity: 1;
+    translate: 0;
+  }
+}
+.one {
+  animation-delay: 0.5s;
+}
+.two {
+  animation-delay: 0.75s;
+}
+.three {
+  animation-delay: 1s;
+}
+.four {
+  animation-delay: 1.25s;
+}
+
+@media only screen and (min-width: 40em) {
+  ul {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+@media only screen and (min-width: 60em) {
+  ul {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2.5rem;
+  }
+  .one,
+  .four {
+    grid-column: 5 / span 4;
+  }
+  .two {
+    grid-column: 3 / span 4;
+  }
+  .three {
+    grid-column: 7 / span 4;
+  }
+  /* To show in a clockwise fashion without grid areas */
+  ul.area .one {
+    grid-column: 3 / span 4;
+    grid-row: 2;
+  }
+  ul.area .two,
+  .four {
+    grid-column: 5 / span 4;
+  }
+
+  /* Using grid areas */
+  ul.area-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+      ". . a a . ."
+      ". b b  c c ."
+      ". . d d . .";
+  }
+  ul.area-grid .one {
+    grid-area: b;
+  }
+  ul.area-grid .two {
+    grid-area: a;
+  }
+  ul.area-grid .three {
+    grid-area: c;
+  }
+  ul.area-grid .four {
+    grid-area: d;
+  }
+}
